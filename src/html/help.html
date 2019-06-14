@@ -1,0 +1,52 @@
+<html>
+    <body>
+        <font size=4><b>Help</b></font>
+        <br><br><b>Settings</b>
+        <br>By default, update delay is 2 seconds (2000 ms).
+        You most likely want to change this value to, for example, 500 ms.
+        To do this, create file <i>config</i> in the folder
+        <i>~/.config/nvidia-system-monitor</i>
+        <br><b>config values:</b>
+        <ul>
+            <li>updateDelay &lt;time in ms&gt;</li>
+            <li>graphLength &lt;time in ms&gt;</li>
+            <li>gpuColor &lt;gpu index&gt; &lt;red&gt; &lt;green&gt; &lt;blue&gt;</li>
+        </ul>
+        <br><br><b>Processes</b>
+        <ul>
+            <li>Name - process name</li>
+            <li>Type - "C" for Compute Process, "G" for Graphics Process, and "C+G" for the process having both Compute and Graphics contexts</li>
+            <li>GPU ID - id of GPU in which process running</li>
+            <li>pid - process id</li>
+            <li>sm [%]</li>
+            <li>mem [%]</li>
+            <li>enc [%]</li>
+            <li>dec [%]</li>
+        </ul>
+
+        <br><br><b>GPU Utilization</b>
+        <br>This section displays a graph of gpu utilization. It also contains some additional information, such as:
+        <ul>
+            <li>Current GPU Utilization</li>
+            <li>Average GPU Utilization (in graph length time)</li>
+            <li>Minimum GPU Utilization (in graph length time)</li>
+            <li>Maximum GPU Utilization (in graph length time)</li>
+        </ul>
+
+        <br><br><b>Memory Utilization</b>
+        <br>This section displays a graph of memory utilization. It also contains some additional information, such as:
+        <ul>
+            <li>Current Memory Utilization</li>
+            <li>Average Memory Utilization (in graph length time)</li>
+            <li>Minimum Memory Utilization (in graph length time)</li>
+            <li>Maximum Memory Utilization (in graph length time)</li>
+            <li>Memory Usage:</li>
+            <ul>
+                <li>Total memory</li>
+                <li>Used memory</li>
+                <li>Free memory</li>
+            </ul>
+        </ul>
+        <br><br><a href="https://github.com/congard/nvidia-system-monitor/blob/master/DONATE.md">Donate</a> <a href="https://github.com/congard/nvidia-system-monitor">Github</a> <a href="https://t.me/congard">Telegram</a>
+    </body>
+</html>

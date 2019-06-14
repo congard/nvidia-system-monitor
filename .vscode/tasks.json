@@ -1,0 +1,74 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+
+        // build
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "./make.sh",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher":[]
+        },
+
+        // run
+        {
+            "label": "Run",
+            "type": "shell",
+            "command": "./bin/nvsm",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher":[]
+        },
+
+        // run with optimus
+        {
+            "label": "Run with optimus",
+            "type": "shell",
+            "command": "optirun",
+            "args": ["./bin/nvsm"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher":[]
+        },
+
+        // build and run
+        {
+            "label": "Build and run",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "-c",
+                "./make.sh && ./bin/nvsm"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher":[]
+        },
+
+        // build and run with optimus
+        {
+            "label": "Build and run with optimus",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "-c",
+                "./make.sh && optirun ./bin/nvsm"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher":[]
+        }
+    ]
+}
