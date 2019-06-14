@@ -8,13 +8,14 @@ Task Manager for Linux for Nvidia graphics cards
 I wrote this program quickly enough, because it was urgently needed. All other functions (temperature, language, etc.) will be added in next versions
 
 # Dependencies
-wxWidgets is required for work. You must install (if using ArchLinux) the `wxgtk3` package
+wxWidgets is required for work. You must install (if using ArchLinux) the `wxgtk` and `wxgtk3` packages
 
 # Building
 Execute:
  1. `mkdir bin`
  2. `chmod +x make.sh`
- 3. Now you can find binary in `bin` folder
+ 3. `./make.sh`
+ 4. `./bin/nvsm` (or if you want to launch on discrete GPU launch with `optirun`)
 
 # Installing
 Currently the installation script is not written yet. But soon it will be written, and it will also be possible to install this package from AUR
