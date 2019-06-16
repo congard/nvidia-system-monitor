@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+
+Exec=nvidia-system-monitor
+Icon=/usr/share/icons/hicolor/512x512/apps/nvidia-system-monitor.png
+
+Name=Nvidia System Monitor
+
+Categories=System;Utility;
