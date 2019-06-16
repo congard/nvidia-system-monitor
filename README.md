@@ -12,7 +12,8 @@ wxWidgets is required for work. You must install (if using ArchLinux) `wxgtk3` p
 
 # Building
 Execute:
-`./make.sh
+`./make.sh`
+
 The executable will be written to bin/nvidia-system-monitor. Note: you have to run it with `optirun bin/nvidia-system-monitor` on discrete GPU
 
 # Installing
