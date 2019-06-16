@@ -2,8 +2,8 @@
 #define CONSTANTS
 
 #ifdef __INSTALL_BUILD__
-#define NVSM_PATH_ABOUT_HTML "about.html"
-#define NVSM_PATH_HELP_HTML "help.html"
+#define NVSM_PATH_ABOUT_HTML "/usr/share/doc/nvidia-system-monitor/html/about.html"
+#define NVSM_PATH_HELP_HTML "/usr/share/doc/nvidia-system-monitor/html/help.html"
 #else
 #define NVSM_PATH_ABOUT_HTML "src/html/about.html"
 #define NVSM_PATH_HELP_HTML "src/html/help.html"
