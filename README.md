@@ -8,7 +8,7 @@ Task Manager for Linux for Nvidia graphics cards
 I wrote this program quickly enough, because it was urgently needed. All other functions (temperature, language, etc.) will be added in next versions
 
 # Dependencies
-wxWidgets is required for work. You must install (if using ArchLinux) `wxgtk3` package
+wxWidgets is required for work. You must install (if using ArchLinux) `wxgtk3` package for work and `wxgtk2` for build
 
 # Building
 Execute:
@@ -18,7 +18,10 @@ The executable will be written to bin/nvidia-system-monitor. Note: you have to r
 
 # Installing
 ## Archlinux
-PKGBUILD avaliable in AUR: [nvidia system monitor](https://aur.archlinux.org/packages/nvidia-system-monitor)
+PKGBUILD avaliable in AUR: [nvidia system monitor](https://aur.archlinux.org/packages/nvidia-system-monitor-git)
+
+## Other
+Run `sudo ./install.sh`. Note: you will not receive automatic updates if you install this way
 
 # Config
 Here example of simple config located in `~/.config/nvidia-system-monitor/config`:
