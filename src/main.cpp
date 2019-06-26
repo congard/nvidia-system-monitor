@@ -169,22 +169,16 @@ MainNotebook *mn;
 
 bool NVSMApp::OnInit() {
     std::cout << "Connecting to nvidia-smi...\n";
-    FILE *files[2] = { fopen("/bin/nvidia-smi", "r"), fopen("/usr/bin/nvidia-smi", "r") };
-    for (FILE *file : files) {
-        if (!file) {
-            std::cout << "nvidia-smi not found. Are you have NVIDIA drivers?\n";
-            wxMessageBox("nvidia-smi not found. Are you have NVIDIA drivers?", "Error");
+    if (system("which nvidia-smi > /dev/null 2>&1")) {
+        std::cout << "nvidia-smi not found. Are you have NVIDIA drivers?\n";
+        wxMessageBox("nvidia-smi not found. Are you have NVIDIA drivers?", "Error");
+        return false;
+    } else {
+        std::string nvsmi_out = exec("nvidia-smi");
+        if (startsWith(split(nvsmi_out, "\n"), "NVIDIA-SMI has failed") != std::string::npos) {
+            std::cout << "nvidia-smi was found, but " << nvsmi_out;
+            wxMessageBox(nvsmi_out + "If you using laptop with discrete NVIDIA GPU, launch this app with optirun", "Error");
             return false;
-        } else {
-            fclose(file);
-            std::string nvsmi_out = exec("nvidia-smi");
-            if (startsWith(split(nvsmi_out, "\n"), "NVIDIA-SMI has failed") != std::string::npos) {
-                std::cout << "nvidia-smi was found, but " << nvsmi_out;
-                wxMessageBox(nvsmi_out + "If you using laptop with discrete NVIDIA GPU, launch this app with optirun", "Error");
-                return false;
-            }
-
-            break;
         }
     }
 
