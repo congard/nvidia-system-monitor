@@ -90,6 +90,18 @@ wxIMPLEMENT_APP(NVSMApp);
 NVSMFrame *frame;
 
 class MainNotebook : public wxNotebook {
+private:
+    void addWorker(Worker *worker) {
+        uint slot;
+
+        for (uint i = 0; i < NVSM_WORKERS_MAX; i++) {
+            if (workerThread->workers[i] == nullptr) slot = i;
+            if (workerThread->workers[i] == worker) return;
+        }
+
+        std::cout << "Worker " << worker << " not added yet, adding at slot " << slot << "\n";
+        workerThread->workers[slot] = worker;
+    }
 public:
     wProcessList *processes;
     UPLWorker *uplWorker;
@@ -126,24 +138,15 @@ public:
     }
 
     void onPageChanged(wxBookCtrlEvent &event) {
-        switch (event.GetOldSelection()) {
-            case MNP_GPU_UTILIZATION:
-                gpuUtilizationPainter->reset();
-                break;
-            case MNP_MEM_UTILIZATION:
-                memUtilizationPainter->reset();
-                break;
-        }
-
         switch (event.GetSelection()) {
             case MNP_PROCESSES:
-                workerThread->worker = uplWorker;
+                addWorker(uplWorker);
                 break;
             case MNP_GPU_UTILIZATION:
-                workerThread->worker = gpuUtilizationWorker;
+                addWorker(gpuUtilizationWorker);
                 break;
             case MNP_MEM_UTILIZATION:
-                workerThread->worker = memUtilizationWorker;
+                addWorker(memUtilizationWorker);
                 break;
         }
     }

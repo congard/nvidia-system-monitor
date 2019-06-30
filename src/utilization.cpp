@@ -200,7 +200,7 @@ public:
                 if (y * cols + x >= GPU_COUNT) return;
                 // measure text block
                 wxString text =
-                    "GPU Utilization: " + std::to_string(gdata[y * cols + x].level) + "%\n" +
+                    "Memory Utilization: " + std::to_string(gdata[y * cols + x].level) + "%\n" +
                     "Average: " + std::to_string(gdata[y * cols + x].avgLevel) + "%\n" +
                     "Min: " + std::to_string(gdata[y * cols + x].minLevel) + "%\n" +
                     "Max: " + std::to_string(gdata[y * cols + x].maxLevel) + "%";
@@ -224,11 +224,6 @@ public:
             paintedY += textBlockHeight + LINE_OFFSET;
             paintedX = 0;
         }
-    }
-
-    virtual void reset() {
-        UtilizationPainter::reset();
-        for (size_t i = 0; i < GPU_COUNT; i++) gmdata[i] = MemData();
     }
 
     ~MemUPainter() {
@@ -280,7 +275,8 @@ public:
         }
 
         // We say that it is time to update Graph
-        panel->GetEventHandler()->AddPendingEvent(wxCommandEvent(wxEVT_COMMAND_TEXT_UPDATED, WAVE_GRAPH_UPDATED_ID));
+        if (panel->IsShown())
+            panel->GetEventHandler()->AddPendingEvent(wxCommandEvent(wxEVT_COMMAND_TEXT_UPDATED, WAVE_GRAPH_UPDATED_ID));
 
         lastTime = getTime();
     }

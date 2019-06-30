@@ -7,6 +7,7 @@
 #endif
 
 #include "settings.cpp"
+#include "constants.h"
 
 class Worker {
 public:
@@ -21,14 +22,22 @@ class WorkerThread : public wxThread {
 public:
     bool isRunning = true;
     bool isWorkDone = true;
-    Worker *worker;
+    Worker **workers;
+
+    WorkerThread() : wxThread() {
+        workers = new Worker*[NVSM_WORKERS_MAX];
+        for (uint i = 0; i < NVSM_WORKERS_MAX; i++) workers[i] = nullptr;
+    }
 
     virtual ExitCode Entry() {
         isWorkDone = false;
 
         while (isRunning) {
-            if (worker == nullptr) continue;
-            worker->work();
+            for (uint i = 0; i < NVSM_WORKERS_MAX; i++) {
+                if (workers[i] == nullptr) continue;
+                workers[i]->work();
+            }
+
             usleep(UPDATE_DELAY_USEC);
         }
 
@@ -39,6 +48,8 @@ public:
     }
 
     ~WorkerThread() {
+        delete[] workers;
+        
         std::cout << "WorkerThread " << this << " deleted\n";
     }
 };

@@ -46,6 +46,8 @@
 #define TEXT_BLOCK_OFFSET 16
 #define LINE_OFFSET       8
 
+#define NVSM_WORKERS_MAX 3
+
 typedef unsigned int uint;
 
 #endif

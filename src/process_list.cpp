@@ -114,7 +114,8 @@ public:
             processes.push_back(pl);
         }
 
-        panel->GetEventHandler()->AddPendingEvent(wxCommandEvent(wxEVT_COMMAND_TEXT_UPDATED, UPL_ID));
+        if (panel->IsShown())
+            panel->GetEventHandler()->AddPendingEvent(wxCommandEvent(wxEVT_COMMAND_TEXT_UPDATED, UPL_ID));
     }
 };
 
