@@ -3,6 +3,11 @@
     <img src="icon.png" alt="icon" width="256" height="256"/>
 </center>
 
+***
+## Warning
+The repository is outdated and will no longer be updated. Check out the new version [here](https://github.com/congard/nvidia-system-monitor-qt). The new version has significantly improved design, bug fixes and optimization.
+***
+
 Task Manager for Linux for Nvidia graphics cards
 
 I wrote this program quickly enough, because it was urgently needed. All other functions (temperature, language, etc.) will be added in next versions
